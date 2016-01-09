@@ -1,6 +1,6 @@
 <?php
 
-namespace Bookkeeper\ManagerBundle\Tests\Controller;
+namespace ListEstate\ListEstateManagerBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

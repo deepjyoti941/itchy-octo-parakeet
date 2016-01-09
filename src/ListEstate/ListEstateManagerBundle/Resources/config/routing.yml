@@ -1,0 +1,12 @@
+list:
+    path:     /
+    defaults: { _controller: ListEstateListEstateManagerBundle:Default:index }
+    requirements:
+        _format: json
+        methods: GET
+list_location:
+    path:     /list-locations
+    defaults: { _controller: ListEstateListEstateManagerBundle:Default:list }
+    requirements:
+        _format: json
+        methods: GET

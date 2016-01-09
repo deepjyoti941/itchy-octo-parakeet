@@ -1,0 +1,4 @@
+services:
+#    list_estate_list_estate_manager.example:
+#        class: ListEstate\ListEstateManagerBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

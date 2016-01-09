@@ -4,6 +4,10 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <!--    ASSETS CSS -->
+        <link rel="stylesheet" href="{{ asset('bundles/ListEstateBundle/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/ListEstateBundle/css/main.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -14,4 +18,15 @@
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
+    <footer>
+        <!--    ASSETS Angularjs -->
+        <script src="{{ asset('bundles/ListEstateBundle/js/jquery.js') }}"></script>
+        <script src="{{ asset('bundles/ListEstateBundle/js/angular.js') }}"></script>
+        <script src="{{ asset('bundles/ListEstateBundle/js/angular-google-maps-native.min.js') }}"></script>
+        <script src="{{ asset('bundles/ListEstateBundle/js/angular-resource.js') }}"></script>
+        <script src="{{ asset('bundles/ListEstateBundle/js/angular-ui-router.js') }}"></script>
+        <script src="{{ asset('bundles/ListEstateBundle/js/app.js') }}"></script>
+        <script src="{{ asset('bundles/ListEstateBundle/js/controller.js') }}"></script>
+
+    </footer>
 </html>

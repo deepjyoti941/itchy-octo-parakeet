@@ -1,0 +1,111 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="body" ng-app="ListEstateApp">
+        <div class="container-fluid" ng-controller="mainController">
+            <div class="row">
+                <div class="col-md-8">
+                    <img class="img-responsive" src="{{ asset('bundles/ListEstateBundle/images/logo.png') }}" alt="">
+                </div>
+                <div class="col-md-4">
+                    <div class="well center-block pull-right">
+                        <span>Total Property: {[{ locations.length }]} |</span>
+                        <span>Total Likes: 23</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row data-container">
+                <div class="col-md-4">
+                    <!-- location menu-->
+                    <div class="well">
+                        <form>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                    <input type="text" class="form-control" placeholder="Search(by name, builder)"
+                                           ng-model="searchBuilder">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div >
+                        <ul class="list-group location-list">
+                            <a class="list-group-item" ng-repeat="location in locations" ng-click="$parent.selected = location; selectLocation(location)" ng-class="{active:selected==location}">
+                            <span class="badge">
+                                <i class="fa fa-angle-right fa-2x"></i>
+                            </span>
+                                <i class="fa fa-home fa-2x"></i> {[{ location.name }]}
+                                <span class="pull-right"><i class="fa fa-inr"></i> {[{ location.price }]}</span>
+                            </a>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="well">
+                                <span><i class="fa fa-sort fa-2x"></i> Short By</span>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="well">
+                                <label class="radio-inline">
+                                    <input type="radio" ng-model="value" value="price" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                    Price
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" ng-model="value" value="location" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                    Area
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" ng-model="value" value="type" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                    Type
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- single location details -->
+                    <div class="col-md-6">
+                        <img class="img-thumbnail"
+                             ng-src="{[{ location.image }]}"
+                             alt="">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">{[{ location.name }]}</div>
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><i class="fa fa-home fa-2x"></i> by {[{ location.builder }]}</li>
+                                    <li class="list-group-item"><i class="fa fa-area-chart fa-2x"></i> Area 750 sq ft
+                                    </li>
+                                    <li class="list-group-item"><i class="fa fa-bed fa-2x"></i> Type: {[{ location.type }]}</li>
+                                    <li class="list-group-item">
+                                        <div class="col-lg-6 color-box" ng-style="{'background-color': location.color}"></div>
+                                        Color
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading text-center">Amenities</div>
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item" ng-repeat="(key, value) in location.amenities.amenities"> {[{ key }]} <span class="badge">{[{ value }]}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" ng-init="showMarker=true; data={}">
+                        <gm-map options="{center: [12.971599, 77.594563], zoom: 10, mapTypeId: google.maps.MapTypeId.ROADMAP}">
+                            <gm-marker ng-show="showMarker" position="location.areaLatLong" options="{draggable: true}"
+                                       on-dragend="data.position = marker.getPosition()">
+                            </gm-marker>
+                        </gm-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
